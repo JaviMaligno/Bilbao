@@ -1,0 +1,234 @@
+\documentclass[twoside, 11pt]{article}
+\usepackage{estilo-apuntes}
+%\usepackage{amsmath,amssymb}
+%\usepackage[utf8]{inputenc}
+%\usepackage[spanish]{babel}
+%\usepackage{caption}
+%\usepackage[]{graphicx}
+%\usepackage{enumerate}
+%\usepackage{amsthm}
+%\usepackage{tikz-cd}
+%\usetikzlibrary{babel}
+%\usepackage{pgf,tikz}
+%\usepackage{mathrsfs}
+%\usepackage{bm}  
+%\usetikzlibrary{arrows}
+%\usetikzlibrary{cd}
+%\usepackage[spanish]{babel}
+%\usepackage{fancyhdr}
+%\usepackage{titlesec}
+%\usepackage{floatrow}
+%\usepackage{makeidx}
+%\usepackage[tocflat]{tocstyle}
+%\usetocstyle{standard}
+%\usepackage{subfiles}
+%\usepackage{color}  
+%\usepackage{hyperref}
+%\hypersetup{colorlinks=true,citecolor=red, linkcolor=blue}
+%\usepackage{eurosym}
+%%\usepackage{ntheorem}
+%
+%
+%\renewcommand{\baselinestretch}{1,4}
+%\setlength{\oddsidemargin}{0.25in}
+%\setlength{\evensidemargin}{0.25in}
+%\setlength{\textwidth}{6in}
+%\setlength{\topmargin}{0.1in}
+%\setlength{\headheight}{0.1in}
+%\setlength{\headsep}{0.1in}
+%\setlength{\textheight}{8in}
+%\setlength{\footskip}{0.75in}
+%
+%\theoremstyle{definition}
+%
+%\newtheorem{teorema}{Teorema}[section]
+%\newtheorem{defi}[teorema]{Definición}
+%\newtheorem{coro}[teorema]{Corolario}
+%\newtheorem{lemma}[teorema]{Lema}
+%\newtheorem{ej}[teorema]{Ejemplo}
+%\newtheorem{ejs}[teorema]{Ejemplos}
+%\newtheorem{observacion}[teorema]{Observación}
+%\newtheorem{observaciones}[teorema]{Observaciones}
+%\newtheorem{prop}[teorema]{Proposición}
+%\newtheorem{propi}[teorema]{Propiedades}
+%\newtheorem{nota}[teorema]{Nota}
+%\newtheorem{notas}[teorema]{Notas}
+%\newtheorem*{dem}{Demostración}
+%\newtheorem{ejer}[teorema]{Ejercicio}
+%\newtheorem{problem}[teorema]{Problema}
+%\newtheorem{concl}[teorema]{Conclusión}
+%
+%\providecommand{\abs}[1]{\lvert#1\rvert}
+%\providecommand{\sen}[1]{sen #1}
+%\providecommand{\norm}[1]{\lVert#1\rVert}
+%\providecommand{\ninf}[1]{\norm{#1}_\infty}
+%\providecommand{\numn}[1]{\norm{#1}_1}
+%\providecommand{\gabs}[1]{\left|{#1}\right|}
+%\newcommand{\bor}[1]{\mathcal{B}(#1)}
+%\newcommand{\R}{\mathbb{R}}
+%\newcommand{\Z}{\mathbb{Z}}
+%\newcommand{\N}{\mathbb{N}}
+%\newcommand{\Q}{\mathbb{Q}}
+%\newcommand{\C}{\mathbb{C}}
+%\newcommand{\Pro}{\mathbb{P}}
+%\newcommand{\Tau}{\mathcal{T}}
+%\newcommand{\verteq}{\rotatebox{90}{$\,=$}}
+%\newcommand{\vertequiv}{\rotatebox{110}{$\,\equiv$}}
+%\providecommand{\lrg}{\longrightarrow}
+%\providecommand{\func}[2]{\colon{#1}\longrightarrow{#2}}
+%\newcommand*{\QED}{\hfill\ensuremath{\blacksquare}}
+%\newcommand*\circled[1]{\tikz[baseline=(char.base)]{
+%            \node[shape=circle,draw,inner sep=1.5pt] (char) {#1};}}
+%\newcommand*{\longhookarrow}{\ensuremath{\lhook\joinrel\relbar\joinrel\rightarrow}}
+
+
+\begin{document}
+%\title{Topología de Superficies}
+%\author{Antonio Rafael Quintero Toscano\\ Javier Aguilar Martín}
+%\date{Curso 2016/2017}
+%\maketitle
+
+\author{Javier Aguilar Martín }
+\date{\today}
+\title{Nilpotent and solvable groups}
+
+\maketitle
+
+
+\begin{abstract}
+
+\end{abstract}
+
+
+	\vfill
+	Esta obra está licenciada bajo la Licencia Creative Commons Atribución 3.0 España. Para ver una copia de esta licencia, visite \url{http://creativecommons.org/licenses/by/3.0/es/} o envíe una carta a Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+
+\newpage
+\tableofcontents
+
+\newpage
+
+
+\section{Nilpotent groups}
+Recall that a group $G$ is abelian if and only if $xy=yx$ forall $x,y\in G$, or equivalently, $x^{-1}y^{-1}xy=1$. The left-hand side expression is called \emph{commutator} of $x$ and $y$, denoted $[x,y]$, so $x$ and $y$ commute iff $[x,y]=1$. If we donote $x^y=y^{-1}xy$, $[x,y]=x^{-1}x^y$, or equivalently, $x^y=x[x,y]$. Another immediate consequence of this definition is $xy=yx[x,y]$.
+
+We can see that $abc\cdots xy\cdots wz=y a^yb^y c^y\cdots x^y\cdots wz$, and similarily if we want to move $x$ to the right but with minus sign. $abc=ba^bc=cb^c(a^b)^c=ab^ca^{bc}$. We can do this with commutators, but it's messier.
+
+Recursively we define by $[x_1,\dots, x_i]=[[x_1,\dots, x_{i-1}],x_i]$ (using ``left-norm convention''). 
+
+\subsection{Basic properties of commutators}
+\begin{enumerate}
+\item $[y,x]=[x,y]^{-1}$
+\item $[xy,z]=[xy,z]=[x,z]^y[y,z]=[x,z][x,z,y][y,z]$
+\item $[x,yz]=[x,z][x,y]^z=[x,z][x,y][x,y,z]$
+\item If $\sigma$ is a homomorphism of groups: $\sigma([x,y])=[\sigma(x),\sigma(y)]$. In particular, $[x,y]^z=[x^z,y^z]$. 
+\item $[x^{-1},y]=([x,y]^{x^{-1}})^{-1}$ and $[x,y^{-1}]=([x,y]^{y^{-1}})^{-1}$
+\end{enumerate}
+Every property is straight forward to prove except the last one, that should be shown by developing $1=[1,y]=[xx^{-1}, y]=[x,y]^{x^{-1}}[x^{-1},y]$
+
+\begin{teorema}[Witt's Identity]
+$[x,y^{-1},z]^y[y,z^{-1},x]^z[z,x^{-1},y]^x=1$. 
+\end{teorema}
+\begin{dem}
+Let's check the first factor, and the others will behave similarily. $[x,y^{-1},z]^y=y^{-1}[x,y^{-1},z]y=y^{-1}[x,y^{-1}]^{-1}x^{-1}[x,y^{-1}]zy=y^{-1}[y^{-1},x]z^{-1}[x,y^{-1}]zy=(y^{-1})^x z^{-1}[x,y^{-1}]zy=x^{-1}y^{-1}xz^{-1}x^{-1}yxy^{-1}zy=(xzx^{-1}yx)`{-1}(yxy^{-1}xy)$
+
+When one does the other two, they cancell.
+\end{dem}
+
+We can rewrite Witt's formula in the following way:
+$[x,y^{-1},z]^y=[[x,y^{-1}],z]^y=[[x,y^{-1}]^y, z^y]$. Recall that $[x,y^{-1}]^y=(([x,y]^{y^{-1}})^{-1})^y=[x,y]^{-1}=[y,x]$. Hence, we have
+\[
+[y,x,z^y][z,y,x^z][x,z,y^{x}]=1
+\]
+If we want to start with $x$, then $[x,y,z^x][z,x,y^z][y,z,x^y]=1$.
+
+\begin{defi}
+A \emph{metabelian} group is a group $G$ with a normal subgroup $N\trianglelefteq G$ such that both $N$ and $G/N$ are abelian. 
+\end{defi}
+Abelian groups, cyclic groups and nilpotent groups are examples of metabelian groups. 
+
+\begin{ej}
+The dihedral group $D_{2n}=\gene{a,b\mid a^n=b^2=1, a^b=a^{-1}}$. The subgroup $\gene{a}$ is normal by direct computation of conjugates. Then $D_{2n}=\gene{\overline{b}}$ is cyclic, so $D_{2n}$ is metabelian.
+\end{ej}
+
+Suppose that we have to classes of groups $\chi$ and $\eta$. A group $G$ is $\chi$-by-$\eta$ if there is a normal subgroup $N$ such that $N\in\chi$ and $G/N\in\eta$. In general, meta-$\chi$=$\chi$-by-$\chi$. 
+
+\begin{ej}
+Consider $A_4$ (order 12) and the subgroup $V=\{1, (12)(34), (13)(24),(14)(23)\}$ which is clearly abelian (Klein group). $|A_4/V|=3$ so it is cyclic (prime order implies cyclic). Then $A_4$ is abelian-by-cyclic. The only cyclic normal subgroup of $A_4$ is trivial, so it is not cyclic-by-abelian. 
+\end{ej}
+
+Observe that if a group is metabelian, all commutators commute with each other. Indeed, let $c_1, c_2$ two commutators in $G$ metabelian. There exist $N\trianglelefteq G$ with $N$ and $G/N$ abelian. Then, in the quotient, $\overline{c}_1=\overline{c}_2=1$. Then, $c_1,c_2\in N$, and hence $c_1$ and $c_2$ commute. Therefore, in metabelian groups Witt's formula looks nicer:
+
+$$[x,y,z][y,z,x][z,x,y]=1$$
+
+We prove this. $[x,y,z^x]=[[x,y],z[z,x]]=[[x,y], [z,x]][[x,y],z]^{[z,x]}$. Since commutators commute with each other, this is simply $[x,y,z]$. Since commutators commute we can write Witt's identity in the order we prefer. 
+
+\begin{defi}
+If $X,Y\subseteq G$ are substes, $[X,Y]=\gene{[x,y]\mid x\in X, y\in Y}$. Note that, $[\{x\},\{y\}]=\gene{[x,y]}$. Recursively define $[X_1,\dots, X_i]$.
+\end{defi}
+Usually $X$ and $Y$ will be subgroups. 
+
+\begin{defi}
+If $G$ is a group and $H,K\leq G$, we say that $K$ \emph{normalizes} $H$ if $K\leq N_G(H)=\{x\in G\mid H^x(=x^{-1}Hx)=H\}=\{x\in G\mid Hx=xH\}$. If that is the case, then $HK=KH$ (which means that $HK$ is a subgroup of $G$). 
+\end{defi}
+Note that, since $H$ normalizes $K$,  $HK=\bigcup_{k\in K}Hk=\bigcup_{k\in K}kH=KH$, so our claim is true.
+
+\begin{defi}
+$K$ \emph{centralizes} $H$ if all elements of $K$ commute with all elements of $H$ (iff any set of generators of $K$ commutes with any set of generators of $H$). This is the same as saying $H$ centralizes $K$.
+\end{defi}
+
+\begin{enumerate}
+\item $[X,Y]=[Y,X]$
+\item $K$ centralizes $H$ iff $[H,K]=1$. In particular $H\leq Z(G)$ ($G$ centralizes $H$) iff $[H,G]=1$. 
+\item $K$ normalizes $H$ iff $[H,K]\leq H$. In particular $N\trianglelefteq G$ iff $[N,G]\leq N$. Note that $[h,k]=h^{-1}h^k$, and because $K$ normalizes $H$, $h^k\in H$. 
+\item If $\sigma$ is a group homomorphism then $\sigma([H,K])=[\sigma(H),\sigma(K)]$. In particupar $[H,K]^g=[H^g, K^g]$. 
+\end{enumerate}
+Rememeber that $H\leq G$ is called \emph{characteristic} if $H$ is invariant under all automorphisms of $G$. We write $H char G$. Of course $HcharG\Rightarrow H\trianglelefteq G$. Hence, $H,K char G\Rightarrow [H,K] char G$ and $H,K \trianglelefteq G\Rightarrow [H,K] \trianglelefteq G$. 
+
+\begin{teorema}
+$[H,K]\trianglelefteq\gene{H,K}$
+\end{teorema}
+\begin{dem}
+We have to show that $H,K\leq N_G([H,K])$ (they normalize the commutator subgroup). Then, $\gene{H,K}\leq N_G([H,K])$, i.e. $[H,K]\trianglelefteq \gene{H,K}$. It suffices to show that $[h,k]^{h'}\in[H,K]$ forall $h,h'\in H$, $k\in K$. Recall. $[hh',k]=[h,k]^{h'}[h',k]$. Since the first and last term belong to $[H,K]$, then the middle term belongs to $[H,K]$, as we wanted to prove. Similarily we can proceed with the producto on the second coordinate. 
+\end{dem}
+
+\begin{teorema}
+If $H$ normalizes $L$, then $[HK,L]=[H,L][K,L]$. This happens forall $H$ in particular when $L \trianglelefteq G$, so commutators of normal subgroups are ``linear''. 
+\end{teorema}
+\begin{dem}
+The inclusion to the left is obvious becaus $H,K\subseteq HK$, so $[H,L],[K,L]\subseteq [HK,L]$, and since $[HK,L]$ is a group, we have $[H,L][K,L]\subseteq [HK,L]$. 
+
+For the other inclusion, $[HK,L]=\gene{[hk,l]\mid h\in H,k\in K, l\in L}$. We are going to prove that $[H,L][K,L]$ is a subgroup of $G$ and that each generator $[kh,l]$ of $[HK,L]$ is inside $[H,L][K,L]$. Note that $[hk,l]=[h,l]^k[k,l]=[h,l][h,l,k][k,l]$. On the left, the first term is in $[H,L]$, the last term is in $[K,L]$ and the middle term is in $[L,K]=[K,L]$. Since $H$ normalizes $L$, $[H,L]\leq L$. So the product is in $[H,L][K,L]$. 
+
+Now, recall that $K$ Normalizes $H$ ($K\leq N_G(H)$) implies $HK=KH$ (and hence $HK$ is a subgroup. Let's see that $[H,L]$ normalizes $[K,L]$. We know that $[K,L]\trianglelefteq \gene{K,L}$, so $L$ normalizes $[K,L]$ (every subgroup  of $\gene{K,L}$ does). $H$ normalizes $L$, implies $[H,L]\leq L$, and we're done. 
+\end{dem}
+
+\begin{teorema}[Philip Hall's three subgroup lemma]
+If $N\trianglelefteq G$ and $H,K,L\leq G$, then IF $[H,K,L],[K,L,H]\leq N$, then also $[L,H,K]\leq N$. 
+\end{teorema}
+\begin{dem}
+We may assume $N=1$ (passing to the quotient). Let us first prove that $[l,h,k]=1$ for all $l\in L, h\in H, k\in K$. Take $x=h^{-1}, y=k,z=l$ in Witt's identity. The first term in the identity belongs to $[H,K,L]=1$ and the second to $[K,J,H]=1$. We then have $[l,h,k]^{h^{-1}}=1$, hence $[l,h,k]=1$. Let us see thtat $[L,H,K]=1$ By definition, $[L,H,K]=[[L,H],K]$, where $[L,H]$ centralizes $K$ and viceversa. The generators of $[L,H]$ are of the form $[l,h]$, so $[[l,h],k]=1$. 
+\end{dem}
+
+\section{Central series}
+\begin{defi}[lower central series]
+It is a series $\{\gamma_i(G)\}_{i\geq 1}$ where $\gamma_1(G)=G$ and $\gamma_i(G)=[\gamma_{i-1}(G),G]$ for $i\geq 2$. 
+\end{defi}
+These groups are characteristic, so they are normal in $G$. Normality implies that $\gamma_i(G)=[\gamma_{i-1}(G),G]\subseteq\gamma_{i-1}(G)$, so they form a descending series. 
+
+\begin{teorema}
+$[\gamma_i(G),\gamma_j(G)]\leq \gamma_{i+j}(G)$ for all $i,j\geq 1$. 
+\end{teorema}
+\begin{dem}
+Induction on $i$. $[\gamma_i(G),\gamma_j(G)]=[\gamma_{i-1}, G, \gamma_j(G)]\overset{?}{\leq} \gamma_{i+j}(G)\trianglelefteq G$. Take $\gamma_{i+j}(G)$ as $N$ in Hall's 3 subgroups lemma. It is enought to show that $[\gamma_{i-1}, G, \gamma_j(G)]\leq \gamma_{i+j}(G)$ and $ [\gamma_j(G),\gamma_{i-1}(G),G)]\leq\gamma_{i+j}(G)$. For $i=1$ it is true. $[G,\gamma_j(G),\gamma_{i-1}(G)]=[\gamma_{j+1}(G),\gamma_{i-1}(G)]\leq \gamma_{i+j}(G)$ (true for $i-1)$. Similarily $[\gamma_j(G),\gamma_{i-1}(G),G]\leq \gamma_{j+1-1}(G),G]=\gamma_{i+j}(G)$.  
+\end{dem}
+
+\begin{teorema}
+$\gamma_i(G)=\gene{[g_1,\dots, g_i]\mid g_j\in G}$
+\end{teorema}
+\begin{dem}
+Inclusion to the left is obvious. To the right, induction on $i$. The statement is true for $i=2$ in general. Call $N=\gene{[g_1,\dots, g_i]\mid g_j\in G}$. We show that $N$ is normal in $G$. For all $x\in G$, $N^x=\gene{[g_1,\dots, g_i]^x\mid g_j\in G}=\gene{[g_1^x,\dots, g_j^x]\mid g_j\in G}$. Since conjugation is an automorphism, we get all the elements of $G$, and therefore $N\trianglelefteq G$. Then we can assume $N=1$ and prove $\gamma_i(G)=1$. By definition, $\gamma_i(G)=[\gamma_{i-1}(G),G]$, so $\gamma_i(G)=1$ iff $\gamma_{i-1}(G)\leq Z(G)$ iff all generators of $\gamma_{i-1}(G)$ commute with all elements of $G$. By induction, the generators can be taken of the form $[g_1,\dots, g_{i-1}]$. So this equivalent to say that $[g_1,\dots, g_i]=1$ for all $g_i\in G$. 
+\end{dem}
+
+\end{document}
