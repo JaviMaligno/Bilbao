@@ -98,7 +98,7 @@
 \begin{abstract}
 
 \end{abstract}
-
+PONER EL PREÁMBULO EN INGLÉS PARA QUE LOS ENTORNOS SALGAN EN INGLÉS
 
 	\vfill
 	Esta obra está licenciada bajo la Licencia Creative Commons Atribución 3.0 España. Para ver una copia de esta licencia, visite \url{http://creativecommons.org/licenses/by/3.0/es/} o envíe una carta a Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
@@ -110,7 +110,7 @@
 \newpage
 
 
-\section{Nilpotent groups}
+\section{Commutators}
 Recall that a group $G$ is abelian if and only if $xy=yx$ forall $x,y\in G$, or equivalently, $x^{-1}y^{-1}xy=1$. The left-hand side expression is called \emph{commutator} of $x$ and $y$, denoted $[x,y]$, so $x$ and $y$ commute iff $[x,y]=1$. If we donote $x^y=y^{-1}xy$, $[x,y]=x^{-1}x^y$, or equivalently, $x^y=x[x,y]$. Another immediate consequence of this definition is $xy=yx[x,y]$.
 
 We can see that $abc\cdots xy\cdots wz=y a^yb^y c^y\cdots x^y\cdots wz$, and similarily if we want to move $x$ to the right but with minus sign. $abc=ba^bc=cb^c(a^b)^c=ab^ca^{bc}$. We can do this with commutators, but it's messier.
@@ -231,4 +231,276 @@ $\gamma_i(G)=\gene{[g_1,\dots, g_i]\mid g_j\in G}$
 Inclusion to the left is obvious. To the right, induction on $i$. The statement is true for $i=2$ in general. Call $N=\gene{[g_1,\dots, g_i]\mid g_j\in G}$. We show that $N$ is normal in $G$. For all $x\in G$, $N^x=\gene{[g_1,\dots, g_i]^x\mid g_j\in G}=\gene{[g_1^x,\dots, g_j^x]\mid g_j\in G}$. Since conjugation is an automorphism, we get all the elements of $G$, and therefore $N\trianglelefteq G$. Then we can assume $N=1$ and prove $\gamma_i(G)=1$. By definition, $\gamma_i(G)=[\gamma_{i-1}(G),G]$, so $\gamma_i(G)=1$ iff $\gamma_{i-1}(G)\leq Z(G)$ iff all generators of $\gamma_{i-1}(G)$ commute with all elements of $G$. By induction, the generators can be taken of the form $[g_1,\dots, g_{i-1}]$. So this equivalent to say that $[g_1,\dots, g_i]=1$ for all $g_i\in G$. 
 \end{dem}
 
+Observe that $G'=[G,G]=\gamma_2(G)$. Take into account that $G'$ is characterised by following property: $G'$ is the smallest normal subgroup of $G$ giving an abelian quotient ($G/G'$ is the largest abelian quotient of $G$, and it's called its \emph{abelianisation}). Given $N\trianglelefteq G$, $G/N$ is abelian iff $[\overline{x},\overline{y}]=\overline{1}$ $\forall \overline{x},\overline{y}\in G/N$ iff $[x,y]\in N$ $\forall x,y\in G$ iff $G'\leq N$. 
+
+\begin{teorema}
+Let $G=\gene{X}$ be a group. Then $\gamma_i(G)=\gene{[x_1,\dots, x_i]^g\mid x_j\in X, g\in G}=\gene{[x_1,\dots, x_i]\mid x_j\in X}^G.$
+\end{teorema}
+
+In general, if $H\leq G$ is not necessarily normal in $G$, that's because some conjugates are missing. The \emph{normal closure} of $H$ in $G$ is the smalles normal subgroup of $G$ containing $H$: $H^G=\gene{h^g\mid h\in H,g\in G}=\gene{H^g\mid g\in G}$. 
+
+\begin{dem}
+Call $N=\gene{[x_1,\dots, x_i]^g\mid x_j\in X, g\in G}\trianglelefteq G$. The inclusion to the left is obvious, so let's prove the other one. We may assume that $N=1$. Is then $\gamma_i(G)=1$? By definition $\gamma_i(G)=[\gamma_{i-1}(G),G]$. Is $\gamma_{i-1}(G)\leq Z(G)$? Let us understand that when $i=1$, the commutator is just an element, so using this base case we do induction on $i$. Assume that $\gamma_{i-1}(G)=\gene{[x_1,\dots, x_{i-1}]^g\mid x_j\in X,g\in G}$. It is enough to show that all generators commute with the elements of $G$. Since $Z(G)$ is a normal subgroup, it is enought to show it for the commutators $[x_1,\dots, x_{i-1}]\in Z(G)$, which is the same as saying that $[x_1,\dots, x_{i-1}]$ commutes with every $x_i\in X$ (since $G=\gene{X}$). But $[[x_1,\dots, x_{i-1}],x_i]=[x_1,\dots, x_i]\in N=1$. 
+
+
+
+\end{dem}
+
+Since $[x_1,\dots, x_i]^g=[x_1,\dots, x_i][x_1,\dots, x_i,g]$ and the second factor belongs to $\gamma_{i+1}(G)$, we have the following corollary
+
+\begin{coro}
+If $G=\gene{X}$, then $\gamma_i(G)=\gene{[x_1,\dots, x_i],\gamma_{i+1}(G)\mid x_j\in X}$, or what is the same $\gamma_i(G)/\gamma_{i+1}(G)=\gene{[\overline{x}_1,\dots, \overline{x}_i]\mid x_j\in X}$
+\end{coro}
+
+Note that in a central series, each quotient $\gamma_i(G)/\gamma_{i+1}(G)$ is abelian since $[\gamma_i(G),\gamma_i(G)]\subseteq [\gamma_i(G),G]=\gamma_{i+1}(G)$. If $G$ is finitely generated, then $\gamma_i(G)$ need not be finitely generated but the quotient by $\gamma_{i+1}(G)$ is by the last corollary. And therefore we can apply the structure theorem to this quotient, but to know something about the precise stricture we need the number of generators and the orders of the generators. We know that $d\left(\gamma_i(G)/\gamma_{i+1}(G)\right)\leq d^i$.
+
+When $X=G$ it is not necessary to take normal closure in the theorem, but in general it is, though we can refine the condition over $X$.
+
+\begin{coro}
+Let $G=\gene{X}$, where $X$ is a \emph{normal} subset of $G$, meaning that it is invariant under conjugation by elements of $G$. Then $\gamma_i(G)=\gene{[x_1,\dots, x_i]\mid x_j\in X}$.
+\end{coro}
+
+\begin{ej}
+$D_{2n}=\gene{a,b\mid a^n=b^2=1, a^b=a^{-1}}$. In this case $X=\{a,b\}$. Since $a^b=a^{-1}\notin X$, $X$ is not normal, so we cannot apply the corollary. Let's apply the theorem. Since $[a,b]=a^{-1}a^b=a^{-2}$, $D'_{2n}=\gene{[a,b]}^{D_{2n}}=\gene{a^2}^{D_{2n}}=\gene{a^2}$ (since $\gene{a}\trianglelefteq D_{2n}$ the same holds for $\gene{a^2}$).
+\end{ej}
+
+\begin{ej}
+$G'=\gene{[x,y]\mid x,y\in G}$. Suppose that we want to compute $G''=(G')'$. By definition it is $\gene{[u,v]\mid u,v\in G'}$. The set of generators of the form $[x,y]$ with $x,y\in G$ is normal in $G$, so also in $G'$. Then, $G''=\gene{[[x,y],[z,t]]\mid z,y,z,t\in G}$. One can easily iterate this method to derive generators of higher derived groups.
+\end{ej}
+
+\begin{ej}
+We are going to construct a group $G=B\ltimes A$ ($B$ acts on $A$ via automorphisms), where $B=\gene{b}\cong C_\infty$ and $A=\gene{a_1}\times\cdots\times\gene{a_n}\cong C_\infty\times\cdots\times C_\infty$. The action automorphism defining the action of $b$ on $A$ is given by $a_i\mapsto a_ia_{i+1}$ for $i=1,\dots, n_1$ and $a_n\mapsto a_n$. This means that $a_1^b=a_1a_2,\dots, a_{n-1}^b=a_{n-1}a_n$ and $a_n^b=a_n$, so $[a_1,b]=a_2,\dots,[a_{n-1},b]=a_n$ and $[a_n,b]=1$. Clearly $G=\gene{A,B}=\gene{b,a_1,\dots, a_{n-1},a_n}=\gene{b,a_1}$ since all $a_i$ can be generated by $a_1$ and $b$ by conjugation. Is $G'=\gene{[a,b]}=\gene{a_2}$? No, because $a_3,\dots, a_n\in G'$ but they're not in $\gene{a_2}$. The problem is that $\gene{a_2}$ is not normal in $G$.
+
+If we take $b,a_1,\dots, a_n$ as generators, $\gene{[a_1, b],\dots, [a_{n-1},b]}^G=\gene{a_2,\dots, a_n}^G=G'$ (note that $[a_i,a_j]=1$ since they lie in an abelian group). But now $\gene{a_2,\dots, a_n}\trianglelefteq G$, which can be proven directly. NO VEO QUE ESTO SEA VERDAD, ¿$a_i^{a_1}$ ESTÁ?
+\end{ej}
+
+If a group $G$ is finitely generated, let us write $d(G)$ for the smallest number of generators of $G$. If $G$ is abelian and $H\leq G$, by the structre theorem, $d(H)\leq d(G)$. This is not necessarily true if $G$ is not abelian. For instance, in the previous example, $d(G)=2$ and $d(A)=n$. One can modify this example to show that a group $H$ can even fail to be finitely generated. 
+
+%\begin{teorema}
+%If $G/G'=\gene{\overline{X}}$ and $\gamma_{i-1}(G)/\gamma_i(G)=\gene{\overline{Y}}$, then $$\gamma_{i-1}(G)/\gamma_i(G)=\gene{\overline{[x,y]}\mid x\in X,y\in Y}.$$
+%\end{teorema}
+%
+%\begin{dem}
+%EXERCISE
+%\end{dem}
+%
+\begin{ej}
+If $G=\gene{X}$ and $|X|=d$, then also $G/G'=\gene{\overline{X}}$. Hence $\gamma_2(G)/\gamma_3(G)=\gene{\overline{[x,y]}x,y\in X}$. There are $\binom{d}{2}$ generators. If $d=2$, say $G=\gene{a,b}$, there is just 1, namely $[\overline{a},\overline{b}]$. -
+\end{ej}
+
+\begin{defi}
+Let $G$ be a group in which there is a bound for the orthers of all the elements (in particular, all elements are of finite order). Then if $e=\mathrm{lcm}(o(g)\mid g\in G)$, which exists because there is a bound, then $g^e=1$ forall $g\in G$. We call $e$ the \emph{exponent} of $G$ and write $\exp(G)$ to denote it.
+\end{defi}
+
+Note that this exponent is not the maximum order. For example, in $S_3$ the maximum order is 3 but the exponent is 6.
+
+\begin{ej}
+If $A=\gene{a_1,\dots, a_d}$ is abelian with all generators of finite order. Then an arbitrary element of $a$ is $a=a_1^{i_1}\cdots a_d^{i_d}$. For $e=\mathrm{lcm}(o(a_i))$ then $a^e= 1$. In this particular case the exponent of $A$ is the least common multiple of the generators of $A$. It is radically false if the group is not abelian, as we will see in the next example.
+\end{ej}
+
+\begin{ej}
+$D_\infty=\gene{a,b\mid b^2=1, a^b=a^{-1}}=\gene{b}\ltimes \gene{a}\cong C_2\ltimes C_\infty$ where te action is given by $a^b=a^{-1}$. This group can be generated by $\{ba,b\}$, which have both order 2, but there are elements of infinite order in the group. 
+\end{ej}
+
+\begin{lemma}
+Let $x\in\gamma_i(G)$ and $y\in\gamma_j(G)$. Recall that $[x,y]\in[\gamma_i(G)),\gamma_j(G)]\subseteq\gamma_{i+j}(G)$. Write $o(x\mod N)$ for the order of $\overline{x}$ in $G/N$. Then $o([x,y]\mod \gamma_{i+j+1}(G))$ divides $\gcd(o(x\mod\gamma_{i+1}(G)), o(y\mod\gamma_{j+1}(G)))$. 
+\end{lemma}
+\begin{proof}
+Let us show that $o([x,y]\mod \gamma_{i+j+1}(G))$ divides $o(x\mod \gamma_{i+1}(G))$. Call the last number $e$, so $x^e\in\gamma_{i+1}(G)$ and $[x,y]^e\in\gamma_{i+j+1}(G)$. We may assume $\gamma_{i+j+1}(G)=1$. If $x$ commutes with $[x,y]$, then $[x,y]=[x^e,y]$, so let's prove that. $[[x,y],x]=\in\gamma_{j+i+1}(G)=1$ so they commute. Now $[x^e, y]\in\gamma_{i+j+1}(G)$ and we're done.
+\end{proof}
+
+\begin{teorema}
+$\exp(\gamma_i(G)/\gamma_{i+1}(G))$ divides $\exp(\gamma_{i-1}(G)/\gamma_i(G))$.
+\end{teorema}
+\begin{dem}
+$\gamma_i(G)/\gamma_{i+1}(G)=\gene{[\overline{x},\overline{y}]\mid x\in\gamma_{i-1}(G),y\in G}$ and it is abelian, so $\exp(\gamma_i(G)/\gamma_{i+1}(G))=\mathrm{lcm}(o([\overline{x},\overline{y}])$, which by thelemma divides $o(x\mod\gamma_i(G))$. By definition, this dives $\exp(\gamma_{i-1}(G)/\gamma_i(G))$. 
+\end{dem}
+
+\begin{coro}
+If $G/G'$ is finite, then $\gamma_i(G)/\gamma_{i+1}G)$ is finite for all $i\geq 1$. 
+\end{coro}
+\begin{dem}
+If $G/G'$ is finite, $\exp(G/G')$ is well defined (finite) and in addition $G/G'$ is finitely generated. Then $\gamma_i(G)/\gamma_{i+1}(G)$ is finitely generated and abelian, so it is finite, and of course $\exp(\gamma_{i-1}(G)/\gamma_i(G))$ is finite. 
+\end{dem}
+\begin{ej}
+EN EL PAPEL
+\end{ej}
+
+\begin{defi}
+A seires of subgroups $N_{r+1}\leq N_r\leq\cdots\leq N_1$ of a group $G$ is \emph{central} if $[N_i,G]\leq N_{i+1}$ for $i=1,\dots, r$. The number $r$ is called the \emph{length} os series.
+\end{defi}
+
+Why \emph{central}? The condition $[N_i,G]\leq N_{i+1}$ is equivalent to say that iff the quotient $\overline{G}=G/N_{i+1}$ is defined, then $[\overline{N}_i,\overline{G}]=\overline{1}$ iff $\overline{N}_i\leq Z(\overline{G})$, i.e $N_i/N_{i+1}\leq Z(G/N_{i+1})$. Observe that in fact $N_i$ must be normal, because $[N_i,G]\leq N_{i+1}\leq N_i]$. 
+
+The most obvious example of central series is the lower central series. If we refine a central series, it is again a central series: if we introduce $N_{i+1}\leq K\leq N_i$, then $[N_i,G]\leq N_{i+1}\leq K$ and $[K,G]\leq [N_i,G]\leq N_{i+1}$. One thing we can do to produce a central series from a normal subgroup $N$, we can start with $N_1=N$ and then $N_2=[N,G]$, $N_3=[N,G,G]$,etc. (This is precisely the lower central series when $N=G$). Another way is going up from the condition $N_i/N_{i+1}\leq Z(G/N_{i+1})$, taking the case of the equality, which means $N=N_{r+1}$, $N_r=Z(G/N_{i+1})$ and so on.
+
+\begin{defi}
+The\emph{upper central series} is the central series obtained in the last way in the previous paragraph starting with $N=1$: $Z_0(G)=1$, $Z_i/Z_{i-1}(G)=Z(G/Z_{i-1}(G))$. In particular, $Z_1(G)=Z(G)$ and $Z_2(G)/Z(G)=Z(G/Z(G))$. 
+\end{defi}
+
+$Z_i(G)(G/Z(G)=Z_i(G)/Z(G)\Rightarrow Z_i(G)(G/Z_j(G)=Z_{i+j}(G)/Z_j(G)$.
+
+\begin{teorema}
+The following conditions are equivalent:
+\begin{enumerate}
+\item There is a central series from 1 to $G$.
+\item The lower central series (LCS) ends in $1$.
+\item The upper central series (UPS) ends in $G$.
+\end{enumerate}
+\end{teorema}
+
+\begin{dem}
+That 1 is equivalent to 2 and 3 is trivial, so we're going to proof 1 implies 2. Let $1=N_{r+1}\leq N_r\leq \cdots \leq N_1=G$ by a central series by 1. $N_1=G$, $\gamma_2(G)=[N_1,G]\leq N_2$, $\gamma_3=[\gamma_2(G),G]\leq [N_2,G]\leq N_3$, and so on until $\gamma_{r+1}(G)\leq N_{r+1}=1$. $N_{r+1}=Z_0(G)=1$. $N_r/N_{r+1}\leq Z(G/N_{r+1}))Z(G)/N_{r+1}\Rightarrow N_r\leq Z(G)$. $N_{r-1}/N_r\leq Z(G/N_r)\Rightarrow N_{r-1}/Z(G)\leq  Z(G/Z(G))=Z_2(G)/Z(G)\Rightarrow N{r-1}\leq Z_2(G)$. If we continuo, we teach $G=N_1\leq Z_r(G)\Rightarrow Z_r(G)=G$. 
+\end{dem}
+
+Note that this proof implies that $\gamma_{i}(G)\leq N_i\leq Z_{r+1-i}$ (whence the names lower and upper). Furthermore, the length of the LCS and UCS of $G$ is at most $r$ (the length of the original central series).
+
+Because of the theorem, if $G$ is nilpotent of nilpotency $c$, comparing the LCS and UCS $\gamma_{c-i+1}(G)\leq Z_i(G)$ for $i=0,\dots, c$.
+
+Using the proof of $[\gamma_i(G),\gamma_j(G)]\leq \gamma_{i+j}(G)$ (using Hall's 3 subgroup lemma in the same way), we can more generally prove that if $N_{r+1}\leq\cdots\leq N_1$ is a central series, then  $[N_i,\gamma_j(G)]\leq N_{i+j}$. In particular, if you apply this to the upper central series $Z_i(G)$, $[Z_i(G), \gamma_j(G)]\leq Z_{i-j}(G)$ (remember that in the UCS the index goes up). As a special case, $[Z_i(G),\gamma_i(G)]=1$ (they commute elementwise). If $i-j<0$, understand this subgroup as 1. This generalises the fact that $[Z(G),G]=1$ because $Z(G)=Z_1(G)$ and $G=\gamma_1(G)$. 
+
+There exists a relationship among exponents in the UCS in a similar way than the case of LCS, namely, $\exp(Z_{i+1}(G)/Z_i(G))$ divides $\exp(Z_i(G)/Z_{i-1}(G)$, but there is no control on the number of generators of one of the quotients in terms of the number of de generators of the previous quoetients. 
+
+For every primer number $p$ and any $n\in\N$, there exists a finite $p$-group satisfying: $1\leq Z(G)\leq Z_2(G)=G$, with the order of $Z(G)$ being $p$ (so $\exp Z(G)=p$) and the order of $G$ being $p^{2n}$ ($\exp Z_2(G)/Z(G)=p$, which means that this group consists of $2n$ copies of $C_p$, so it needs $2n$ generators). This example can be modified to make $|Z_2(G):Z(G)|=\infty$. 
+
+\section{Nilpotent groups}
+
+\begin{defi}
+A \emph{nilpotent} group is one for which the equivalent conditions of the precious theorem hold. In that case, by the observation above, the length of the LCS and UCS is the same, and it is less than or equal to the length of any other central series. This number $c$ is called the \emph{nilpotency class} of $G$ and is determined by any of the condition $\gamma_{c+1}(G)=1$ or $Z_c(G)=G$. 
+\end{defi}
+
+
+Then, we say that $G$ is nilpotent of class $c$ if $\gamma_{c+1}(G)=1$ (and not earlier) or equivalently if $Z_c(G)=G$ (and not earlier). Note that abelian groups are exactly nilpotent groups of class 1, because $Z(G)=G$. At the same time, $G$ is abelian iff $[x_1,x_2]=1$ for any pair of generators of $G$. Since for $G=\gene{X}$ $\gamma_i(G)=\gene{[g_1,\dots, g_i]\mid g_j\in G}=\gene{[x_1,\dots, x_i]^g\mid g\in G, x_j\in X}$, $G$ is nilpotent of class at most $c$ iff $[g_1,\dots, g_{c+1}]=1$ $\forall g_j\in G$ iff $[x_1,\dots, x_{c+1}]=1$ $\forall x_j\in X$.
+
+\begin{ej}
+If $p$ is a prime, then all finite $p$-groups are nilpotents.
+
+\begin{lemma}
+If $G$ is a finite $p$-group and $1\neq N\trianglelefteq G$, then $N\cap Z(G)\neq 1$. In particular, if $G\neq 1$, then $Z(G)\neq 1$. 
+\end{lemma}
+\begin{proof}
+Consider the partition of $G$ into conjugacy classes. The length of a conjugacy class $x^G=\{x^g\mid g\in G\}$ is given by the formula $|x^G|=|G:C_G(X)|$, which divides $|G|$ (a power of $p$). Therefore $|x^G|$ is a power of $p$, and then it has only one element or $p | |x^G|$. In the first case we have $x^g=x$ for every $g\in G$, so $x\in Z(G)$. Note that $N$ is a union of conjugacy classes. Are there non-trivial elements whose conjugacy class consists only in one element? Write $N$ as union of the conjugacy classes that have one element (those in the center) and the ones whose order is a power of $p$. Then $|N|=pm+|N\cap Z(G)|$. Hence $p$ divides $|N\cap Z(G)|$ and thus $N\cap Z(G)\neq 1$. 
+
+Alternatively, we can assume that there is only one element in the center and then $|N|=pm+1$, which is not divisible by $p$ (contradiction).
+\end{proof}
+
+Why is a finite $p$-group nilpotent? If $G=1$ it is trivial. If $G\neq 1$ and $Z(G)=G$ we'r done, otherwise $G/Z(G)\neq 1$. $Z_2(G)/Z(G)=Z(G/Z(G))\neq 1$, so $Z(G)<Z_2(G)$. Sice the group if finite and each step produces a larger group, it ends in $G$ at some point.
+\end{ej} 
+
+\begin{ej}
+The direct product of finitely many nilpotent groups is nilpotent. If $G=G_1\times\cdots G_n$, then $\gamma_i(G)=\gamma_i(G_1)\times\cdots\times \gamma_i(G_n)$. Actually, the nilpotency class of $G$ is the maximum of the nilpotency classes of the factors.
+\end{ej}
+
+\begin{ej}
+A direct product of finitely many finite $p$-groups (for possibly different primes $p$) is nilpotent. We will prove that the converse holds: $G$ finite nilpotent implies $G$ is a direct product of finite $p$-groups. 
+\end{ej}
+
+\begin{ej}
+$G=B\ltimes A=\gene{b}\ltimes \gene{a_1}\times\cdots\times\gene{a_n}\cong C_\infty\ltimes C_\infty\times\cdots\times C_\infty$. The action is given by $a_i^b=a_ia_{i+1}$ ($i=1,\dots, n-1$), $a_n^b=a_n$. Then $\gamma_i(G)=\gene{a_i,\dots, a_n}$ ($\gamma_{n+1}(G)=1$). Then $G$ is nilpotent of class $n$, so there are groups of any nilpotency class. 
+
+There are also finite examples (taken from finite $p$-groups). Let $p$ a prime and $G$ having the same expresion by now $\gene{a_i}=C_p$. We shouldn't choose $\gene{b}=C_p$, because the order of the automorphism induce by the action of $b$ must divide the order of $b$. In this case, it can be checked that the automorphism described before is a power of $p$ depending on $n$, say $p^{\alpha(n)}$. Hence, we take $\gene{b}\cong C_{p^{\alpha(n)}}$. The calculation of the LCS is the same, so we have found a finite $p$-group of class $n$.  
+\end{ej}
+
+\begin{ej}
+Semidirect poduct do not preserve nilpotency: $D_{2n}=\gene{b}\ltimes\gene{a}$ is only nilpotent if $n$ is a power of 2, as we have seen in the exercises. As a consequence, nilpotency is not preserved under extensions: $1\to N\to G\to G/N\to 1$ with $N$ and $G/N$ nilpotent doesn't imply $G$ is nilpotent. But we will see that if $N\trianglelefteq G$ with $N$ nilpotent and there is a group $N'$ in the middle of the central series of $N$ such that $G/N'$ is nilpotent, then $G$ is nilpotent.
+\end{ej}
+
+\begin{ej}
+A subgroup of a nilpotent group is nilpotent. Let $G$ be a group and $H,K$ nilpotent subgroups. It is not true in general that $\gene{H,K}$ is nilpotent (take the previous example with $H=\gene{a}$ and $K=\gene{b}$). This not true even when $HK$ es a subgroup.
+\end{ej}
+
+\begin{teorema}
+The product of two (and so, of finitely many) nilpotent normal subgroups of a group is nilpotent. 
+\end{teorema}
+\begin{dem}
+Let $L,N\trianglelefteq G$ be nilpotent. We prove that $LN$ is nilpotent (when the groups are normal the product is a normal subgroup). Say $\gamma_{r+1}(L)=1=\gamma_{s+1}(N)$, let us see that $\gamma_{r+s+1}(LN)=1$. $$\gamma_{r+s+1}(LN)=[LN,\dots, LN]=\prod_{K_i\in\{L,N\}}[K_1,\dots, K_{r+s+1}]$$
+
+Since there are $r+s+1$ subgroups $K_i$ which can only be $L$ or $N$, one of these two possibilities happens:
+\begin{enumerate}
+\item $L$ appears at least $r+1$ times
+\item $N$ appears at least $s+1$ times.
+\end{enumerate}
+
+For the first, the commutetor is a subgroup of $[L,\dots, L]$ (as many times as there were) because $[L,N]\leq L$ by normality. Since $[L,\dots, L]\leq \gamma_{r+1}(L)=1$ we are done since the other case is analogue.
+
+\end{dem}
+
+
+\begin{nota}
+The theorem is not necessarily true for inifinitely many factors (see exercises). What subgroup do we mean with inifinitely many factors?
+\begin{enumerate}
+\item Forget about ``product'' and take the subgroup they generate.
+\item Interpret the product of infinitely many factors as consisting all finite products form by taking elements from the factors. 
+\end{enumerate}
+
+Actually both interpretations are equivalent. 
+\end{nota}
+
+Now suppose $G$ is finite and consider the product of all nilpotent normal subgroups of $G$ (there are finitely many). This product is nilpotent, but not only this, but it is the largest nilpotent normal subgroup of $G$ by definition. We call it the \emph{fitting subgroup} of $G$ and write it as $F(G)$. We have as a consequence of this definition that $G$ is nilpotent iff $F(G)=G$. It can be checked that $F(G)$ is characteristic in $G$. Recall that a non-abelian simple group $G$ cannot be nilpotent, because the are only two normal subgroups, so the only way to reach 1 is that $G$ is abelian. Thus, if $G$ is non-abelian simple group, then $F(G)=1$. 
+
+\begin{ej}
+In $S_3$ there is only one normal subgroup (there are a total of 4 maximal subgroups, generated by 2-cycles), the one generated by $\gene{(123)}$, so we can form $S_3\to \gene{(123)}\to 1$ and $F(S_3)=\gene{(123)}$. 
+\end{ej}
+
+
+\begin{teorema}[Properties of nilpotent groups] Let $G$ be a nilpotent group. Then:
+\begin{enumerate}
+\item $1\neq N\trianglelefteq G\Rightarrow  [N,G]<N$. In particular, $G'<G$ if $G\neq 1$. 
+\item $1\neq N\trianglelefteq G\Rightarrow N\cap Z(G)=1$. In particular, if $G\neq 1$, then $Z(G)\neq 1$. 
+\item Every subgroup $H$ of $G$ is subnormal (there exists a sieres $H=H_0\trianglelefteq\cdots\trianglelefteq H_r= G$).
+\item $H<G\Rightarrow H<N_G(H)$ (the normalizer condition). 
+\item Every maximal subgroup of $G$ is normal in $G$. As a consequence, the index in $G$ is a prime number.
+\end{enumerate}
+\end{teorema}
+
+Note that if the index of $H$ in $G$ is a prime number, the subgroup is maximal, since any group in the middle of $G$ and $H$ must have index 1. In the case of $G=A_4$, the subgroup $H=\gene{(123)}$ (order 3) is of index 4, but $A_4$ has no subgroups of order 6, so it is maximal. 
+
+\begin{dem}\
+\begin{enumerate}
+\item If by contradiction $[N,G]=N$ then $1\neq N=[N,G]=[N,G,G]=\cdots=[N,G,\dots, G]\leq \gamma_{c+1}(G)=1$ ($c$ times $G$). 
+\item Since $1\neq N$ and $N>[N,G]$, suposse $[N,G]\neq 1$. Then $N>[N,G]>[N,G,G]>\cdots>[N,G,\dots,G]=1$ ($c$ times). There is some point in which $[N,G,\dots, G]\neq 1$  ($r$ times) but $[N,G,\dots, G,G]=1$. Then the first of these commutators is a subgroup of $Z(G)\cap N$, implying that $N\cap Z(G)\neq 1$.
+\item We multiply the LCS by $H$: $H=H\gamma_{c+1}(G)\leq\cdots\leq H\gamma_2(G)\leq G=H\gamma_1(G)$. Is $H\gamma_{i+1}(G)\trianglelefteq H\gamma_i(G)$? Equivalently, does $H\gamma_i(G)$ normalize $H\gamma_{i+1}(G)$? It is enough to show that $H$ and $\gamma_i(G)$ normalize $H\gamma_{i+1}(G)$. $H\leq H\gamma_{i+1}(G)$ normalizes $H\gamma_{i+1}(G)$. What about $\gamma_i(G)$? $[H\gamma_{i+1}(G),\gamma_i(G)]\leq [G,\gamma_i(G)]=\gamma_{i+1}(G)\leq H\gamma_{i+1}(G)$. 
+
+\item Consider a series as in 3: $H=H_0\trianglelefteq H_1\trianglelefteq\cdots\trianglelefteq H_r=G$ (we may assume that $H_i\neq H_j$ for $i\neq j$). Since $H_0<H_1$ and it is normal, then $H_1\leq N_G(H)$.  
+\item $M$ maximal in $G$ implies $M<G$, which by the normalizer condition implies $M<N_G(M)\leq G$. Since $M$ maximal in $G$ we have indeed $N_G(M)=G$, hence $M\trianglelefteq G$. 
+
+A general fact: if $M$ is a maximal subgroup of $G$ and $M$ is normal, then $|G:M|$ is a prime. Since $M$ is normal and maximal, the only subgroups of $G/M$ are the trivial one and $G/M$, because of the correspondency theorem between subgroups of the quotient and intermediate subgroups between $G$ in $M$. Then $G/M$ has prime order, and this is why $|G:M|$ is a prime. 
+\end{enumerate}
+\end{dem}
+
+These properties characterise nilpotent groups if we restrict to finite groups with one exception: there are finite non-nilpotent groups which satisfy 2. 
+
+\begin{ej}
+Take $G=SL_2(K)=\left\{\begin{pmatrix}
+a & b\\
+c & d
+\end{pmatrix}=A\in M_2(K)\mid \det(A)=1\right\}$. Then all normal subgroups of $G$ are either $G$ or contained in $Z(G)=\left\{\begin{pmatrix}
+\lambda & 0\\
+0 &\lambda
+\end{pmatrix}\mid \lambda^2=1\in K\right\}$. If $K$ is a finite field (so $G$ is finite) and $|K|$ is odd, $K^*$ is a cyclic group of order $|K|-1$ (this number is even, so 2 divides it) so there exists $\lambda\in K$ of order 2. $Z(G)\neq 1$ in this case. But then $1\neq N\trianglelefteq G$ implies that either $N=G\Rightarrow N\cap Z(G)=Z(G)\neq 1$ either $N\subseteq Z(G)$. But $G$ is not nilpotent: $G/Z(G)=PSL_2(K)$ is a non-abelian simple group, implying that $G/Z(G)$ is not nilpotent, so $G$ is not nilpotent.
+\end{ej}
+
+\begin{teorema}[Characterization of finite nilpotent groups]
+If $G$ is finite, then any of the properties 1,3,4 and 5 imply that $G$ is nilpotent, so they are equivalent to nilpotency in finite groups, as are the following two
+\begin{enumerate}
+\item[6] All Sylow subgroups are normal.
+\item[7] $G$ is the direct product of its Sylow subgroups.
+\end{enumerate}
+\end{teorema}
+\begin{dem}
+We have seen the implication $1\Rightarrow$ $G$ nilpotent.  We are going to prove $G$ nilpotent implies  1 and 3, and then $3\Rightarrow 4\Rightarrow 5\Rightarrow 6\Rightarrow 7\Rightarrow G$ nilpotent.
+
+\begin{itemize}
+\item If $G=1$, then it is nilpotent. If $G\neq 1$, then $G>[G,G]$. If $[G,G]=1$, $G$ is nilpotent. Otherwise, iterate $[G,G]>[G,G,G]$ and so on. Since $G$ is finite, this series stabilises, so there is some $\gamma_i(G)=1$.
+\end{itemize}
+\end{dem}
+
+
+
+
+
+
+
+
+ 
 \end{document}
