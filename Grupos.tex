@@ -335,10 +335,10 @@ Why \emph{central}? The condition $[N_i,G]\leq N_{i+1}$ is equivalent to say tha
 The most obvious example of central series is the lower central series. If we refine a central series, it is again a central series: if we introduce $N_{i+1}\leq K\leq N_i$, then $[N_i,G]\leq N_{i+1}\leq K$ and $[K,G]\leq [N_i,G]\leq N_{i+1}$. One thing we can do to produce a central series from a normal subgroup $N$, we can start with $N_1=N$ and then $N_2=[N,G]$, $N_3=[N,G,G]$,etc. (This is precisely the lower central series when $N=G$). Another way is going up from the condition $N_i/N_{i+1}\leq Z(G/N_{i+1})$, taking the case of the equality, which means $N=N_{r+1}$, $N_r=Z(G/N_{i+1})$ and so on.
 
 \begin{defi}
-The\emph{upper central series} is the central series obtained in the last way in the previous paragraph starting with $N=1$: $Z_0(G)=1$, $Z_i/Z_{i-1}(G)=Z(G/Z_{i-1}(G))$. In particular, $Z_1(G)=Z(G)$ and $Z_2(G)/Z(G)=Z(G/Z(G))$. 
+The \emph{upper central series} is the central series obtained in the last way in the previous paragraph starting with $N=1$: $Z_0(G)=1$, $Z_i/Z_{i-1}(G)=Z(G/Z_{i-1}(G))$. In particular, $Z_1(G)=Z(G)$ and $Z_2(G)/Z(G)=Z(G/Z(G))$. 
 \end{defi}
 
-$Z_i(G)(G/Z(G)=Z_i(G)/Z(G)\Rightarrow Z_i(G)(G/Z_j(G)=Z_{i+j}(G)/Z_j(G)$.
+$Z_i(G)(G/Z(G))=Z_i(G)/Z(G)\Rightarrow Z_i(G)(G/Z_j(G)=Z_{i+j}(G)/Z_j(G)$.
 
 \begin{teorema}
 The following conditions are equivalent:
@@ -366,7 +366,7 @@ For every primer number $p$ and any $n\in\N$, there exists a finite $p$-group sa
 \section{Nilpotent groups}
 
 \begin{defi}
-A \emph{nilpotent} group is one for which the equivalent conditions of the precious theorem hold. In that case, by the observation above, the length of the LCS and UCS is the same, and it is less than or equal to the length of any other central series. This number $c$ is called the \emph{nilpotency class} of $G$ and is determined by any of the condition $\gamma_{c+1}(G)=1$ or $Z_c(G)=G$. 
+A \emph{nilpotent} group is one for which the equivalent conditions of the previous theorem hold. In that case, by the observation above, the length of the LCS and UCS is the same, and it is less than or equal to the length of any other central series. This number $c$ is called the \emph{nilpotency class} of $G$ and is determined by any of the condition $\gamma_{c+1}(G)=1$ or $Z_c(G)=G$. 
 \end{defi}
 
 
@@ -492,15 +492,159 @@ We have seen the implication $1\Rightarrow$ $G$ nilpotent.  We are going to prov
 
 \begin{itemize}
 \item If $G=1$, then it is nilpotent. If $G\neq 1$, then $G>[G,G]$. If $[G,G]=1$, $G$ is nilpotent. Otherwise, iterate $[G,G]>[G,G,G]$ and so on. Since $G$ is finite, this series stabilises, so there is some $\gamma_i(G)=1$.
+
+\item (All maximal subgroups are normal implies all Syllow subgroups are normal) Say $|G|=p_1^{n_1}\cdots p_t^{n_t}$ with $p_i$ different primes. Choose a Sylow $p_i$-subgroup $P_i$ for every $i=1,\dots, t$. Is $G=P_1\times\cdots\times P_t$? ($G=P_1\cdots P_t$ and for every $i$ $P_i\trianglelefteq G$ and $P_i\cap P_1\cdots P_{i-1}P_{i+1}\cdots P_t=1$). For every $i_1,\dots, i_s\in \{1,\dots, t\}$ we have $|P_{i_1}\cdots P_{i_2}|=p_{i_1}^{n_{i_1}}\cdots p_{i_2}^{n_{i_s}}$ using the formula $|HK|=\frac{|H||K|}{|H\cap K|}$ when $H$ and $K$ are subgroups. Since $P_i$ are normal, their product is a subgroup so we can iterate the formula in order to get the cardinality of the whole product. Note that $P_{i_1}\cdots P_{i_{s-1}}\cap P_{i_s}$ is 1 because the two intersecting groups have relatively prime orders.  
+
+\item (All Sylow subgroups are normal implies $G$ is the direct product of its Sylow groups) We need two lemmas for this proof.
+\begin{lemma}(Frattini argument)
+Let $G$ be a finite group and let $N\trianglelefteq G$. If $P$ is a Sylow subgroup of $N$, then $G=N_G(P)N$. 
+\end{lemma}
+\begin{proof}
+We proof only inclusion to the right, because the other one is obvious. Let $g\in G$. We have $P^g\subseteq N^g=N$ and $|P^g|=|P|$. Then $P^g$ is also a Sylow subgroup of $N$ for the same prime. Two Sylow subgroups of a group are conjugate in that group, so $P$ and $P^g$ are conjugate in $N$. This means that $P^{gn}=P$ for some $n\in N$. Then $gn\in N_G(P)$, so we can write $g=gn\cdot n^{-1}$ as an element of $N_G(P)$ times an element of $N$. 
+\end{proof}
+
+\begin{lemma}
+Let $G$ be a finite group and $P$ a Sylow subgroup of $G$. Then if $N_G(P)\leq H$, we have $N_G(H)=H$.
+\end{lemma}
+\begin{proof}
+Apply Frattini Argument to  $N_G(H)$, $H$ and $P$, since $P$ is a Sylow subgroup of $H$. Then $N_G(H)=N_{N_G(H)}(P)H$. It is clear that $N_{N_G(H)}(P)\subseteq N_G(P)$ (in fact they are equal, but we don't care) and $N_G(P)\subseteq H$, so $N_G(H)=H$. 
+\end{proof}
+
+Let us prove the implication. By contradiction, suppose $P$ is a non-normal Sylow subgroup. Then there exists $M$ maximal in $G$ such that $N_G(P)\leq M<G$.  But then $N_G(M)=M$, but then $M\not\trianglelefteq G$\footnote{\url{https://proofwiki.org/wiki/Normal_Subgroup_iff_Normalizer_is_Group}} gives a contradiction. 
 \end{itemize}
 \end{dem}
 
+Let us see more basic properties of finite $p$-groups. 
+
+\begin{teorema}
+Let $G$ be a finite $p$-group. Then 
+\begin{enumerate}
+\item If $H\leq G$, then there exists a series $H_0=1\leq H_1\leq\cdots \leq H\leq \cdots \leq H_n=G$ where $|H_{i+1}:H_i|=p$ and $H_i\trianglelefteq H_{i+1}$. 
+\item If $N\trianglelefteq G$ then there exists a series $N_0=1\leq N_1\leq\cdots \leq N\leq \cdots \leq N_n=G$ where $|N_{i+1}:N_i|=p$ and $N_i\trianglelefteq G$.
+\end{enumerate}
+\end{teorema}
+\begin{dem}\
+\begin{enumerate}
+\item We use 2. Since $G$ is nilpotent, $H$ is subnormal. We have $H\trianglelefteq G$. We can fill this by applying two to get the indices equals $p$. 
+\item By induction on $|G$. If $|G|=1$, trivial. Assume $|G|>1$. If $N\neq 1$ then $N\cap Z(G)\neq 1$. Choose a subgroup (an element) $N_1$ of order $p$ inside $N\cap Z(G)$ (exists because all subgroups of all subgroups of a $p$-groups divide the order, and we can form an element of order $p$ from an element of order $p^k$; one can also use Cauchy theorem that says that for every prime divisor of the order there exists an element of that order).  Then we have $1=N_0\leq N_1$. Go to $G/N_1$, which contains $N/N_1$ as a normal subgroup. By induction there is a series as we want
+\[
+1=N_1/N_1\leq N_2/N_1\leq \cdots N/N_1\leq\cdots\leq G/N_1
+\]
+Use the correspondence theorem to get a series in $G$. If $N=1$, then choose any non-trivial $K\trianglelefteq G$ and use the series given by $K$. 
+\end{enumerate}
+
+\end{dem}
 
 
+\begin{coro}
+A finite nilpotent group $G$ has (normal) subgroups of order $d$ for every divisor $d$ of $|G|$. 
+\end{coro}
 
+How can we know how many elements are needed to generate a finite $p$-group (the smallest possible number of generators $d(G)$?
 
+\begin{defi}
+If $G\neq 1$ is a finite group, the \emph{Frattini subgroup} of $G$ is $\Phi(G)=\bigcap\{$ maximal subgroups of $G\}$. It is customary to take $\Phi(G)=1$ if $G=1$. 
+\end{defi}
 
+Note that it is necessary for $G$ to be finite, since there are groups like $\Q$ that do not have maximal subgroups, although the Frattini subgroup can be redefined to include infinite groups, since for every element $q$, there are maximal subgroups among the subgroups that do not containg that element. 
 
+\begin{teorema}
+Let $G$ be a finite group and let $X\subseteq G$. If $G=\gene{X,\Phi(G)}$, then also $G=\gene{X}$. For this reason, the elements of $\Phi(G)$ are called \emph{non-generators} of $G$. A consequence of this is that if $H\leq G$ and $G=H\Phi(G)$, then $G=H$. 
+\end{teorema}
+\begin{dem}
+By contradiction, suppose $\gene{X}<G$. Since $G$ is finite, we can find a maximal subgroup $M$ such that $\gene{X}\leq M$. But also $\Phi(G)\leq M$, so $\gene{X,\Phi(G)}\leq M<G=\gene{X,\Phi(G)}$, a contradiction.
+\end{dem}
 
+\begin{defi}
+An \emph{elementary abelian $p$-group}, where $p$ is a prime, is an abelian group in which $x^p=1$ for all elements (all non-identity elements are of orther $p$).
+\end{defi}
+
+If an elementary abelian $p$-group is finite then it is isomorphic to $C_p\times\cdots\times C_p$. 
+
+\begin{nota}
+An elementary abelian $p$-group $G$ can be seen as a vector space over the field $\F_p=\Z/\Z_p$. The product by scalar is defined by $\overline{\lambda}g=g^{\lambda}$ for $g\in G$ and $\overline{\lambda}\in\F_p$. Since the order of $g$ is $p$, this operation is well-defined. 
+\end{nota}
+
+\begin{teorema}[Burnside Basis Theorem]
+Let $G$ be a finite $p$-group. Then
+\begin{enumerate}
+\item $G/\Phi(G)$ is an elementary abelian $p$-group, and so it can be regarded as an $\F_p$-vector space. 
+\item $\{x_1,\dots, x_d\}$ is a minimal set of generators of $G$ iff $\{x_1\Phi(G),\dots, x_d\Phi(G)\}$ is basis of $G/\Phi(G)$. 
+\item We can determine $d(G)$ by the condition $|G:\Phi(G)|=p^{d(G)}$. 
+\end{enumerate}
+\end{teorema}
+\begin{dem}\
+\begin{enumerate}
+\item Let $M_1,\dots,M_k$ be all maximal subgroups of $G$. Then $\Phi(G)=M_1\cap\cdots\cap M_k$. Not that in a nilpotent group every maximal subgroup is normal and has prime index. In this case, since $G$ is a $p$-group, each $M_i$ has index $p$. Then $G/M_i\cong C_p$. Consider the canonical homomorphism $\theta:G\to G/M_1\times\cdots\times G/M_k\cong C_p\times\cdots\times C_p$. The image of $\theta$ is a subgroup and it is not trivial, so $\theta$ is surjective. In addition $\ker\theta=M_1\cap\cdots\cap M_k=\Phi(G)$. Then $G/\phi(G)\cong C_p\times\cdots\times C_p$ and then it is elementary abelian. 
+
+\item Immediate consequence of $G=\gene{X}\Leftrightarrow G=\gene{X,\Phi(G)}\Leftrightarrow G/\Phi(G)=\gene{\overline{X}}$. 
+
+\item By 2 $d(G)=\dim_{\F_p}G/\Phi(G)$. If $\overline{x}_1,\dots, \overline{x}_{d(G)}$ is a basis of $G/\Phi(G)$, $G/\Phi(G)=\{\lambda_1 \overline{x}_1+\cdots \lambda_{d(G)}\overline{x}_{d(G)}\mid \lambda_i\in\F_p$ all different$\}$. The amount possible linear combinations are $|G/\Phi(G)|=p^{d(G)}$ because there are $p$ options for each coeficient. 
+\end{enumerate}
+\end{dem}
+
+\begin{coro}
+In a finite $p$-groups all minimal sets of generators have the same cardinality, namely $d(G)$. 
+\end{coro}
+
+Recall that this is false even for cyclic groups. One ccan even show that, for a given natural number $N$, one can find a finite cyclic group $G$ (so $d(G)=1)$ where there is a minimal set of generators with $n$ elements. 
+
+\begin{teorema}
+Let $G$ be a finite $p$-group. Then
+\begin{enumerate}
+\item $\Phi(G)$ is the smallest normal subgroup of $G$ giving elementary abelian quotient (giving quotient isomorphic to $C_p\times\cdots\times C_p$).
+\item $\Phi(G)=G'\cdot G^p$, where $G^p=\gene{g^p\mid g\in G}$. 
+\end{enumerate}
+\end{teorema}
+ \begin{dem}\
+ \begin{enumerate}
+ \item We prove that $G/N$ is elementary abelian iff $\Phi(G)\leq N$. Firs, implication to the left. Let us see that $G/\Phi(G)$ is elementary abelian. $G/N\cong \frac{G/\Phi(G)}{N/\Phi(G)}$, so also $G/N$ is elementary abelian. 
  
+ Now to the right. If $G/N$ is elementary abelian, $G/N$ can be seen as an $\F_p$-vector space and maximal subgroups are the same as maximal subspaces. The intersection of all maximal subspaces of a vector space is $\{0\}$. This tells us that $\Phi(G)\leq N$ via correspondence theorem, because we get this inclusion by taking only the maximal subgroups containing $N$, and hence we get it intersecting even more. 
+ 
+ \item $G/N$ elementary abelian iff $[\overline{x},\overline{y}]=\overline{1}$ $\overline{x}^p=\overline{1}$ $\forall x,y\in G$ iff $[x,y]\in N$, $x^p\in N$ forall $x,y\in G$ iff $G'GP\subseteq N$. Now $G'G^p$ satisfying the characterizing property of $\Phi(G)$ we showed in 1, so $\Phi(G)=G'G^p$. 
+ \end{enumerate}
+ \end{dem}
+ 
+ Note that $G'G^p$ can be obtained in 2 steps:
+ \begin{enumerate}
+ \item Calculate $G'$ (relatively easy if we knoe generators).
+ \item Go to the abelianisation $G/G'$ and take $p$-th powers there (instead of in $G)$. This is easy if we know generators: $G/G'=\gene{\overline{x}_1,\dots, \overline{x}_n}$ implies $(G/G')^p=\gene{\overline{x}^p_1,\dots, \overline{x}_d^p}$ (this can be absolutely wrong ig the group is not abelian). But now $(G/G')^p=G^pG'/G'$, so by the correspondence theorem $G'G^p=\gene{x_1^p,\dots, x_d^p}G'$. 
+ \end{enumerate}
+ 
+ Once we know $\Phi(G)$, we can calculate all maximals subgroups of $G$ more easily (especially in the case of finite $p$-groups). We can calculate of maximal subspaces on the quotient and by the correspondence we get of maximal subgroups containing $\Phi(G)$, but by definition every maximal subgroup contains $\Phi(G)$, so we get all.
+ 
+
+\begin{ej}
+Suppose that $G$ is a finite $p$-group with $d(G)=2$. Then $G/\Phi(G)\cong C_p\times C_p$ (dimension 2). Its maximal subspaces are those generated by a non-zero vector. There are $p^2-1$ non-zero vectors and there are $p-1$ generators of every such subspace, so there are $p+1$ subspaces of dimension 1 (maximal subspaces). 
+\end{ej}
+
+\begin{teorema}
+Let $G$ be a finite group. Then if $N\trianglelefteq G$ and contains $\Phi(G)$: $N/\Phi(G)$ nilpotent implies $N$ nilpotent. As a consequence:
+\begin{enumerate}
+\item $\Phi(G)$ is nilpotent, and so $\Phi(G)\leq F(G)$.
+\item $G/\Phi(G)$ nilpotent implies $G$ nilpotent. 
+\end{enumerate}
+\end{teorema}
+Proving that a group $G$ is nilpotent, one can then star assuming wlog that $\Phi(G)$ going to the quotient by 2. 
+
+\begin{dem}
+Let us prove that every Sylow subgroup $P$ of $N$ is normal in $N$. $P\Phi(G)/\Phi(G)$ is a Sylow subgroup of $N/\Phi(G)$, that is nilpotent. Then $P\Phi(G)/\Phi(G)\trianglelefteq N/\Phi(G)$. Every Sylow group is conjugate to another one, so being normal implies that it is the only Sylow group and from Sylow theory we know that $P\Phi(G)/\Phi(G) char N/\Phi(G)\trianglelefteq G/\Phi(G)$, which implies $P\Phi(G)/\Phi(G)\trianglelefteq G/\Phi(G)$. Since $P$ is Sylow in $N$ and it is normal in $P\Phi(G)$, $P$ is Sylow in $P\Phi(G)$. Then we can use Frattini argument, with wich $G=N_G(P)P\Phi(G)=N_G(P)\Phi(G)$. 
+\end{dem}
+
+
+\begin{coro}
+Let $G$ be a finite group. Then the following are equivalent:
+\begin{enumerate}
+\item $G$ is nilpotent.
+\item $G/\Phi(G)$ is abelian.
+\item $G'\leq \Phi(G)$.
+\end{enumerate}
+\end{coro}
+We are particularily interested in the equivalence $1\Leftrightarrow 3$. 
+\begin{dem}
+$2\Leftrightarrow 3$ is obvious. $2\Rightarrow 1$: $G/\Phi(G)$ abelian implies $G/\Phi(G)$ is nilpotent, so $G$ is nilpotent.
+
+$1\Rightarrow 3$. Let $M_1,\dots, M_k$ be all the max subgroups of $G$. Then $\Phi(G)=M_1\cap\cdots\cap M_k$ and $G/M_i$ is of prime order for all $i$, so $G'\leq M_i$ and therefore $G'\leq M_1\cap\cdots\cap M_k=\Phi(G)$. 
+\end{dem}
 \end{document}
